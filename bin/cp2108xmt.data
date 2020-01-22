@@ -1,0 +1,6 @@
+FilterPartNumByte { { 08 } }
+FilterVidPid { { 10c4 } { ea71 } }
+VidPid { { 10c4 } { ea71 } }
+MaxPower { { 32 } }
+PowerMode { { 00 } }
+QuadPortConfig { { 1515 0000 0007 0045 0005 0000 0000 0000 0000 0000 ffff ffbb fffc ffff ffff 1515 0000 0007 0045 0005 0000 0000 0000 0000 0000 ffff ffbb fffc ffff ffff 00 00 00 00 0c 0c 00 00 30 ff ff ff ff } }

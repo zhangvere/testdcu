@@ -1,0 +1,20 @@
+#!/bin/sh
+if [[ -f /tmp/cp210xsmt ]] && [[ -f /tmp/libcp210xmanufacturing.so.1.0 ]]; then
+	chmod 755 /tmp/cp210xsmt
+	
+	ln -s /tmp/libcp210xmanufacturing.so.1.0 /lib/libcp210xmanufacturing.so.1 >> /dev/null 2>&1
+	RESULT=`/tmp/cp210xsmt --device-count 1 --set-config /tmp/cp2108.data`
+	rm /lib/libcp210xmanufacturing.so.1
+	if [ "$RESULT" = "programmed 1 devices: OK" ]; then
+		echo 50 > /sys/class/leds/clou\:led1/delay_on
+		echo 2000 > /sys/class/leds/clou\:led1/delay_off
+		echo -n OK
+	else
+		echo 100 > /sys/class/leds/clou\:led1/delay_on
+		echo 100 > /sys/class/leds/clou\:led1/delay_off
+	fi
+else
+	echo 100 > /sys/class/leds/clou\:led1/delay_on
+	echo 100 > /sys/class/leds/clou\:led1/delay_off
+fi
+
